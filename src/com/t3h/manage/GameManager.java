@@ -124,7 +124,7 @@ public class GameManager {
                 int x =arrGoomba.get(i).getX();
                 arrGoomba.get(i).setX(x-1);
             }
-            if (arrGoomba.get(i).getX() - mario.getX() <= MyFrame.W_Frame /1.5) {
+            if (arrGoomba.get(i).getX() - mario.getX() <= MyFrame.W_Frame /1.5 || arrGoomba.get(i).checkMove == true) {
                 arrGoomba.get(i).move(arrMap, checkMapMove);
                 arrGoomba.get(i).checkMove = true;
             }
