@@ -10,6 +10,7 @@ public class Map {
     private int bit;
     private int w = 34;
     private int h = 40;
+    public boolean pushed = false;
     private Image[] img = {
             ImageLoader.getImage("floor3.png"),
             ImageLoader.getImage("question_box.png"),
@@ -57,26 +58,38 @@ public class Map {
         return bot;
     }
 
-    private boolean pushed = false;
+    int push = 20;
 
     public void push(Mario mario) {
-        if (checkPush(mario)) {
-                y -= 4;
+        if (impactBrick == true) {
+            if (push == 0) {
                 pushed = true;
+                return;
+            }
+            if (push > 0) {
+                y -= 2;
+                push -= 2;
+            }
         }
     }
 
     public void fall() {
         if (pushed) {
-            y += 4;
-            pushed = false;
+            if (push == 20) {
+                pushed = false;
+                impactBrick = false;
+                return;
+            }
+            y += 2;
+            push += 2;
         }
     }
-
+    private boolean impactBrick = false;
     public boolean checkPush(Mario mario) {
         if (bit == 3) {
             Rectangle rect = mario.getRectTop().intersection(getRectBot());
             if (!rect.isEmpty()) {
+                impactBrick = true;
                 return true;
             }
         }
@@ -88,8 +101,9 @@ public class Map {
     }
 
     public void move(int orient) {
+        int xR = x;
+        int yR = y;
         switch (orient) {
-
             case Mario.MOVE_LEFT:
                 break;
             case Mario.MOVE_RIGHT:

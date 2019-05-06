@@ -39,8 +39,8 @@ public class GameManager {
 
     protected void checkCreate(int x, int y) {
         Goomba g = new Goomba(x, y);
-            arrGoomba.add(g);
-            System.out.println("Goomba have been create");
+        arrGoomba.add(g);
+        System.out.println("Goomba have been create");
     }
 
 
@@ -103,6 +103,8 @@ public class GameManager {
         mario.jump();
     }
 
+    long t;
+
     public boolean ai() {
         if (checkMarioMove == false) {
             mario.setIndex(0);
@@ -113,31 +115,46 @@ public class GameManager {
         }
 
         for (int i = 0; i < arrMap.size(); i++) {
+            arrMap.get(i).checkPush(mario);
+
+            if (arrMap.get(i).pushed == false) {
                 arrMap.get(i).push(mario);
+            } else {
                 arrMap.get(i).fall();
+            }
         }
         for (int i = arrGoomba.size() - 1; i >= 0; i--) {
             arrGoomba.get(i).changImage();
             arrGoomba.get(i).fall(arrMap);
             boolean check = arrGoomba.get(i).checkMove;
-            if (checkMapMove && !check){
-                int x =arrGoomba.get(i).getX();
-                arrGoomba.get(i).setX(x-1);
+            if (checkMapMove && !check) {
+                int x = arrGoomba.get(i).getX();
+                arrGoomba.get(i).setX(x - 1);
             }
-            if (arrGoomba.get(i).getX() - mario.getX() <= MyFrame.W_Frame /1.5 || arrGoomba.get(i).checkMove == true) {
+            if (arrGoomba.get(i).getX() - mario.getX() <= MyFrame.W_Frame / 1.5 || arrGoomba.get(i).checkMove == true) {
                 arrGoomba.get(i).move(arrMap, checkMapMove);
                 arrGoomba.get(i).checkMove = true;
             }
 
             boolean checkDie = arrGoomba.get(i).checkDie(mario);
             if (checkDie) {
+                arrGoomba.get(i).die();
+                arrGoomba.get(i).setOrient(Enemy.DIE);
+                long T = System.currentTimeMillis();
+                if (T - t < 2000) {
+                    continue;
+                }
+                t = T;
                 arrGoomba.remove(i);
                 System.out.println("Goomba have been destroy");
             }
 
         }
         mario.fall(arrMap);
-        if (mario.checkDie(arrGoomba)) return false;
+        if (mario.checkDie(arrGoomba)) {
+            mario.die();
+            return false;
+        }
         return true;
     }
 }

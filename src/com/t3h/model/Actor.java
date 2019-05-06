@@ -14,12 +14,14 @@ public class Actor {
     public static final int JUMP_RIGHT = 3;
     public static final int MOVE_LEFT = 4;
     public static final int MOVE_RIGHT = 5;
-    public static final int DIE =6;
+    public static final int DIE = 6;
     private int index = 0;
     private int count = 0;
     private int jump = 0;
     private int w = 40;
     private int h = 44;
+    private int jumpCount = 0;
+    public boolean die = false;
 
     protected int x, y;
     protected int orient;
@@ -60,23 +62,60 @@ public class Actor {
             case JUMP_RIGHT:
                 x += speed;
                 break;
-            case DIE:
-                x+=5;
-                break;
-
         }
-        if (checkMap(arrMap) == false) {
+        if (checkMap(arrMap) == false && !die) {
             x = xR;
             y = yR;
             return;
         }
 
-        if (x <= 0 || x >= MyFrame.W_Frame - images.get(orient)[index].getWidth(null)+10) {
+        if (x <= 0 || x >= MyFrame.W_Frame - images.get(orient)[index].getWidth(null) + 10) {
             x = xR;
         }
         if (y <= 0 || y >= MyFrame.W_Frame - images.get(orient)[index].getHeight(null) - 40) {
             y = yR;
         }
+    }
+
+    public void jump() {
+        jumpCount++;
+        if (jump > 0) return;
+        if (jumpCount >= 2) {
+            jumpCount = 0;
+            return;
+        }
+        if (jump == 0) {
+            if (!die) {
+                soundManage.play("smw_jump.wav");
+            }
+            jump = 120;
+        }
+    }
+
+    public void fall(ArrayList<Map> arrMap) {
+        int yR = y;
+        int xR = x;
+        //change y when jump
+        if (jump > 0) {
+            y -= 3;
+            jump -= 2;
+        } else {
+            //change y when fall
+            jump = -1;
+            y += 3;
+        }
+        boolean check = checkMap(arrMap);
+        if (check == false && !die) {
+            if (y > 481) return;
+            y = yR;
+            x = xR;
+            jump = 0;
+        }
+    }
+
+    public void die() {
+        die = true;
+        jump();
     }
 
     public boolean checkMap(ArrayList<Map> arrMap) {
@@ -89,6 +128,22 @@ public class Actor {
             }
         }
         return true;
+    }
+
+    public boolean checkDie(ArrayList<Enemy> arrE) {
+        for (int i = 0; i < arrE.size(); i++) {
+            Rectangle right = arrE.get(i).getRectLeft().intersection(getRectRight());
+            Rectangle left = arrE.get(i).getRectRight().intersection(getRectLeft());
+            if (!right.isEmpty() || !left.isEmpty() && !die) {
+                soundManage.play("smb_mariodie.wav");
+                return true;
+            }
+        }
+        if (this.y > 490 && !die) {
+            soundManage.play("smb_mariodie.wav");
+            return true;
+        }
+        return false;
     }
 
     public void setIndex(int index) {
@@ -133,8 +188,8 @@ public class Actor {
 
     public Rectangle getRectTop() {
         Rectangle rect = new Rectangle(
-                x, y-2,
-                w, 2
+                x+10, y - 2,
+                w-20, 2
         );
         return rect;
     }
@@ -145,56 +200,6 @@ public class Actor {
                 w, 1
         );
         return rect;
-    }
-    private int jumpCount =0;
-    public void jump() {
-        jumpCount ++;
-        if (jump > 0) return;
-        if (jumpCount >=2) {
-            jumpCount = 0;
-            return;
-        }
-        if (jump == 0) {
-            soundManage.play("smw_jump.wav");
-            jump = 120;
-        }
-    }
-
-    public void fall(ArrayList<Map> arrMap) {
-        int yR = y;
-        int xR = x;
-        //change y when jump
-        if (jump > 0) {
-            y -= 3;
-            jump -= 2;
-        } else {
-            //change y when fall
-            jump = -1;
-            y += 3;
-        }
-        boolean check = checkMap(arrMap);
-        if (check == false) {
-            if (y > 481) return;
-            y = yR;
-            x = xR;
-            jump = 0;
-        }
-    }
-
-    public boolean checkDie(ArrayList<Enemy> arrE) {
-        for (int i = 0; i < arrE.size(); i++) {
-            Rectangle right = arrE.get(i).getRectLeft().intersection(getRectRight());
-            Rectangle left = arrE.get(i).getRectRight().intersection(getRectLeft());
-            if (!right.isEmpty() || !left.isEmpty() ) {
-                soundManage.play("smb_mariodie.wav");
-                return true;
-            }
-        }
-        if (this.y > 490) {
-            soundManage.play("smb_mariodie.wav");
-            return true;
-        }
-        return false;
     }
 
     public int getX() {

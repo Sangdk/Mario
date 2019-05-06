@@ -18,7 +18,8 @@ public class Enemy {
     public int w = 40, h = 44;
     private int index = 0;
     private int count;
-    public boolean checkMove= false;
+    public boolean checkMove = false;
+    public boolean die = false;
 
     protected ArrayList<Image[]> images = new ArrayList<>();
     private SoundManage soundManage = new SoundManage();
@@ -27,6 +28,7 @@ public class Enemy {
         this.x = x;
         this.y = y;
     }
+
     public void changImage() {
         count++;
         if (count < 15) {
@@ -61,7 +63,7 @@ public class Enemy {
                 x += speed;
                 break;
         }
-        if (checkMap(arr, false) == false) {
+        if (checkMap(arr, false) == false ) {
             x = xR;
             y = yR;
             return;
@@ -69,6 +71,9 @@ public class Enemy {
 
     }
 
+    public void die() {
+        die = true;
+    }
 
     public boolean checkMap(ArrayList<Map> arrMap, boolean fromFall) {
         for (Map m : arrMap
@@ -77,13 +82,13 @@ public class Enemy {
             Rectangle rect = m.getRect().intersection(getRect());
 
             if (rect.isEmpty() == false) {
-                if (!fromFall){
-                if (this.orient == LEFT) {
-                    this.orient = RIGHT;
-                } else if (this.orient == RIGHT) {
-                    this.orient = LEFT;
+                if (!fromFall) {
+                    if (this.orient == LEFT) {
+                        this.orient = RIGHT;
+                    } else if (this.orient == RIGHT) {
+                        this.orient = LEFT;
+                    }
                 }
-            }
                 return false;
             }
         }
@@ -97,33 +102,34 @@ public class Enemy {
         );
         return rect;
     }
-    public Rectangle getRectLeft(){
+
+    public Rectangle getRectLeft() {
         Rectangle rect = new Rectangle(
-                x-2,y,
-                2,h
-        );
-        return rect;
-    }
-    public Rectangle getRectRight(){
-        Rectangle rect = new Rectangle(
-                x+w,y,
-                2,h
+                x - 2, y,
+                2, h
         );
         return rect;
     }
 
-    public Rectangle getRectTop(){
+    public Rectangle getRectRight() {
         Rectangle rect = new Rectangle(
-                x,y-2,
-                w,2
+                x + w, y,
+                2, h
+        );
+        return rect;
+    }
+
+    public Rectangle getRectTop() {
+        Rectangle rect = new Rectangle(
+                x, y - 2,
+                w, 2
         );
         return rect;
     }
 
     public boolean checkDie(Mario mario) {
         Rectangle top = mario.getRectBot().intersection(getRectTop());
-        if (top.isEmpty() == false) {
-            orient = DIE;
+        if (top.isEmpty() == false && !mario.die && !die) {
             soundManage.play("smw_kick.wav");
             return true;
         }
@@ -152,4 +158,7 @@ public class Enemy {
         this.x = x;
     }
 
+    public void setOrient(int orient) {
+        this.orient = orient;
+    }
 }
