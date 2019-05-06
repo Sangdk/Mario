@@ -6,6 +6,7 @@ import com.t3h.model.enemy.Enemy;
 import com.t3h.model.Map;
 import com.t3h.model.Mario;
 import com.t3h.model.enemy.Goomba;
+import sounds.MusicManage;
 import sounds.SoundManage;
 
 import java.awt.*;
@@ -17,9 +18,10 @@ public class GameManager {
     private ArrayList<Enemy> arrGoomba;
     private MapManager mapManager = new MapManager();
     private SoundManage soundManage = new SoundManage();
+    private MusicManage musicManage = new MusicManage();
 
     public void initGame() {
-        soundManage.play("enterGame.wav");
+        MusicManage.play("world_1-1.mid");
         mario = new Mario(300, 380);
 
         arrGoomba = new ArrayList<>();
