@@ -157,6 +157,9 @@ public class GameManager {
             if (arrMap.get(i).pushed == false) {
                 arrMap.get(i).push(arrCoin);
             } else {
+                if (arrMap.get(i).getBit() == 2){
+                    arrMap.get(i).setIndex(1);
+                }
                 arrMap.get(i).fall();
             }
         }

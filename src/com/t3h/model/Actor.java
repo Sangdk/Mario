@@ -107,6 +107,7 @@ public class Actor {
         }
         boolean check = checkMap(arrMap);
         if (check == false && !die) {
+
             if (y > 481) return;
             y = yR;
             x = xR;
@@ -130,7 +131,6 @@ public class Actor {
         }
         return false;
     }
-
     public boolean checkMap(ArrayList<Map> arrMap) {
         for (Map m : arrMap
         ) {

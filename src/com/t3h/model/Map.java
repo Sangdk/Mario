@@ -17,36 +17,61 @@ public class Map {
     int push = 20;
     private boolean impactBrick = false;
     private Coin coin;
+    private int index=0;
 
-    private Image[] img = {
-            ImageLoader.getImage("floor3.png"),
-            ImageLoader.getImage("question_box.png"),
-            ImageLoader.getImage("brick.png"),
-            ImageLoader.getImage("pipe.png"),
-            ImageLoader.getImage("cloud.png"),
-            ImageLoader.getImage("cloud1.png"),
-            ImageLoader.getImage("cloud2.png"),
-            ImageLoader.getImage("moutain1.png"),
-            ImageLoader.getImage("moutain2.png"),
-            ImageLoader.getImage("Pipe2.png"),
-            ImageLoader.getImage("stair1.png"),
-    };
+    private ArrayList<Image[]> img = new ArrayList<>();
 
     public Map(int x, int y, int bit) {
         this.x = x;
         this.y = y;
         this.bit = bit;
+        img.add(new Image[]{
+                ImageLoader.getImage("floor3.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("question_box.png"),
+                ImageLoader.getImage("null_box.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("brick.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("pipe.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("cloud.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("cloud1.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("cloud2.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("mountain1.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("mountain2.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("Pipe2.png")
+        });
+        img.add(new Image[]{
+                ImageLoader.getImage("stair1.png")
+        });
+
+
     }
 
     public void draw(Graphics2D g2d) {
         if (bit == 8 || bit == 9) {
-            g2d.drawImage(img[bit - 1], x, y, 130, 130, null);
+            g2d.drawImage(img.get(bit - 1)[index], x, y, 130, 130, null);
         } else if (bit == 4) {
-            g2d.drawImage(img[bit - 1], x, y-50, 60, 100, null);
+            g2d.drawImage(img.get(bit - 1)[index], x, y-50, 60, 100, null);
         } else if (bit == 10) {
-            g2d.drawImage(img[bit - 1], x, y-100, 60, 150, null);
+            g2d.drawImage(img.get(bit - 1)[index], x, y-100, 60, 150, null);
         } else {
-            g2d.drawImage(img[bit - 1], x, y, 34, 40, null);
+            g2d.drawImage(img.get(bit - 1)[index], x, y, 34, 40, null);
         }
     }
 
@@ -60,10 +85,11 @@ public class Map {
         }
     }
     public void push(ArrayList<Coin> arrCoin) {
-        if (impactBrick == true) {
+        if (impactBrick == true && !colected) {
             if (push == 0) {
                 if (bit == 2){
-                    coinUp(x+12,y,arrCoin);
+                    coinUp(x+7,y,arrCoin);
+                    colected = true;
                     SoundManage.play("smw_coin.wav");
                 }
                 pushed = true;
@@ -75,10 +101,10 @@ public class Map {
             }
         }
     }
-
+    boolean colected =false;
     public void coinUp(int x, int y, ArrayList<Coin> arrCoin){
-        coin = new Coin(x,y);
-        arrCoin.add(coin);
+            coin = new Coin(x, y);
+            arrCoin.add(coin);
     }
 
     public void fall() {
@@ -137,5 +163,9 @@ public class Map {
 
     public int getX() {
         return x;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

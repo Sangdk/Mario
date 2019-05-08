@@ -7,7 +7,7 @@ import java.awt.*;
 public class Coin {
     private int x;
     private int y;
-    private int h = 10;
+    private int h = 20;
     private Image image = ImageLoader.getImage("coin.png");
 
     public Coin(int x, int y) {
@@ -16,7 +16,7 @@ public class Coin {
     }
 
     public void draw(Graphics2D g2d) {
-        g2d.drawImage(image, x, y, 10, 10, null);
+        g2d.drawImage(image, x, y, 20, 20, null);
     }
 
     public boolean move() {
