@@ -20,6 +20,7 @@ public class Enemy {
     private int count;
     public boolean checkMove = false;
     public boolean die = false;
+    private long t;
 
     protected ArrayList<Image[]> images = new ArrayList<>();
     private SoundManage soundManage = new SoundManage();
@@ -63,7 +64,7 @@ public class Enemy {
                 x += speed;
                 break;
         }
-        if (checkMap(arr, false) == false ) {
+        if (checkMap(arr, false) == false) {
             x = xR;
             y = yR;
             return;
@@ -72,7 +73,13 @@ public class Enemy {
     }
 
     public void die() {
+        orient = DIE;
+        t = System.currentTimeMillis();
         die = true;
+    }
+
+    public long getT() {
+        return t;
     }
 
     public boolean checkMap(ArrayList<Map> arrMap, boolean fromFall) {

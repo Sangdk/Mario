@@ -6,18 +6,23 @@ import javax.sound.midi.Sequencer;
 import java.io.File;
 
 public class MusicManage {
+    public static Sequencer sequencer;
 
-    public static void play(String name){
+    public static void play(String name) {
         try {
-            File f = new File("src/sounds/"+name);
+            File f = new File("src/sounds/" + name);
             Sequence sequence = MidiSystem.getSequence(f);
-            Sequencer sequencer = MidiSystem.getSequencer();
+            sequencer = MidiSystem.getSequencer();
             sequencer.open();
             sequencer.setSequence(sequence);
             sequencer.setLoopCount(9999);
             sequencer.start();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void stop() {
+        sequencer.stop();
     }
 }

@@ -1,8 +1,11 @@
 package com.t3h.model;
 
+import com.t3h.model.items.Coin;
 import images.ImageLoader;
+import sounds.SoundManage;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Map {
     private int x;
@@ -11,6 +14,10 @@ public class Map {
     private int w = 34;
     private int h = 40;
     public boolean pushed = false;
+    int push = 20;
+    private boolean impactBrick = false;
+    private Coin coin;
+
     private Image[] img = {
             ImageLoader.getImage("floor3.png"),
             ImageLoader.getImage("question_box.png"),
@@ -34,35 +41,31 @@ public class Map {
     public void draw(Graphics2D g2d) {
         if (bit == 8 || bit == 9) {
             g2d.drawImage(img[bit - 1], x, y, 130, 130, null);
+        } else if (bit == 4) {
+            g2d.drawImage(img[bit - 1], x, y-50, 60, 100, null);
+        } else if (bit == 10) {
+            g2d.drawImage(img[bit - 1], x, y-100, 60, 150, null);
         } else {
             g2d.drawImage(img[bit - 1], x, y, 34, 40, null);
         }
     }
 
-    public Rectangle getRect() {
-//        if (bit == 1) {
-//            w = img[bit - 1].getWidth(null);
-//            h = img[bit - 1].getHeight(null);
-//        }
-        Rectangle rect = new Rectangle(
-                x, y, w, h
-        );
-        return rect;
+    public void move(int orient) {
+        switch (orient) {
+            case Mario.MOVE_LEFT:
+                break;
+            case Mario.MOVE_RIGHT:
+                x -= 1;
+                break;
+        }
     }
-
-    public Rectangle getRectBot() {
-        Rectangle bot = new Rectangle(
-                x, y + h,
-                w, 2
-        );
-        return bot;
-    }
-
-    int push = 20;
-
-    public void push(Mario mario) {
+    public void push(ArrayList<Coin> arrCoin) {
         if (impactBrick == true) {
             if (push == 0) {
+                if (bit == 2){
+                    coinUp(x+12,y,arrCoin);
+                    SoundManage.play("smw_coin.wav");
+                }
                 pushed = true;
                 return;
             }
@@ -71,6 +74,11 @@ public class Map {
                 push -= 2;
             }
         }
+    }
+
+    public void coinUp(int x, int y, ArrayList<Coin> arrCoin){
+        coin = new Coin(x,y);
+        arrCoin.add(coin);
     }
 
     public void fall() {
@@ -84,11 +92,38 @@ public class Map {
             push += 2;
         }
     }
-    private boolean impactBrick = false;
+
+    public Rectangle getRect() {
+        if (bit == 4) {
+            Rectangle rect = new Rectangle(
+                    x, y-50, 60, 90
+            );
+            return rect;
+        }
+        if (bit == 10) {
+            Rectangle rect = new Rectangle(
+                    x, y-100, 60, 140
+            );
+            return rect;
+        }
+        Rectangle rect = new Rectangle(
+                x, y, w, h
+        );
+        return rect;
+    }
+
+    public Rectangle getRectBot() {
+        Rectangle bot = new Rectangle(
+                x + 7, y + h,
+                w - 14, 2
+        );
+        return bot;
+    }
+
     public boolean checkPush(Mario mario) {
-        if (bit == 3) {
+        if (bit == 3 || bit == 2) {
             Rectangle rect = mario.getRectTop().intersection(getRectBot());
-            if (!rect.isEmpty()) {
+            if (!rect.isEmpty() && !mario.die) {
                 impactBrick = true;
                 return true;
             }
@@ -98,18 +133,6 @@ public class Map {
 
     public int getBit() {
         return bit;
-    }
-
-    public void move(int orient) {
-        int xR = x;
-        int yR = y;
-        switch (orient) {
-            case Mario.MOVE_LEFT:
-                break;
-            case Mario.MOVE_RIGHT:
-                x -= 1;
-                break;
-        }
     }
 
     public int getX() {

@@ -30,7 +30,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         super.paintComponent(g2d);
-        g2d.drawImage(Background, 0, 0,750,550, null);
+        g2d.drawImage(Background, 0, 0, 750, 550, null);
         manager.draw(g2d);
     }
 
@@ -59,9 +59,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                 manager.setCheckMapMove(false);
                 manager.setMarioMove(false);
             }
-                if (b.get(KeyEvent.VK_UP) == true) {
-                    manager.marioJump();
-                }
+            if (b.get(KeyEvent.VK_UP) == true) {
+                manager.marioJump();
+            }
             boolean check = manager.ai();
 //            if (!check){
 //                int result = JOptionPane.showConfirmDialog(

@@ -6,8 +6,8 @@ import com.t3h.model.enemy.Enemy;
 import com.t3h.model.Map;
 import com.t3h.model.Mario;
 import com.t3h.model.enemy.Goomba;
+import com.t3h.model.items.Coin;
 import sounds.MusicManage;
-import sounds.SoundManage;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,18 +17,18 @@ public class GameManager {
     private ArrayList<Map> arrMap;
     private ArrayList<Enemy> arrGoomba;
     private MapManager mapManager = new MapManager();
-    private SoundManage soundManage = new SoundManage();
-    private MusicManage musicManage = new MusicManage();
+    private ArrayList<Coin> arrCoin;
 
     public void initGame() {
-        MusicManage.play("world_1-1.mid");
         mario = new Mario(300, 380);
 
         arrGoomba = new ArrayList<>();
 
+        arrCoin = new ArrayList<>();
+
         initEnemy();
         arrMap = mapManager.readMap("map.txt");
-
+        MusicManage.play("world_1-1.mid");
     }
 
     public void initEnemy() {
@@ -55,7 +55,14 @@ public class GameManager {
                 g.draw(g2d);
             }
         }
+        if (arrCoin != null) {
+            for (Coin c : arrCoin
+            ) {
+                c.draw(g2d);
+            }
+        }
         mario.draw(g2d);
+
     }
 
     private boolean checkMapMove = false;
@@ -70,42 +77,72 @@ public class GameManager {
         this.checkMarioMove = checkMarioMove;
     }
 
+    boolean marioLeft = false;
+    boolean marioRight = false;
+
     public void marioMove(int orient) {
         mario.setOrient(orient);
         mario.changImage();
         checkMarioMove = true;
         if (orient == Actor.MOVE_LEFT) {
             mario.move(arrMap);
+
+            marioLeft = true;
+            marioRight = false;
+
             checkMapMove = false;
             return;
         }
         if (orient == Actor.MOVE_RIGHT && arrMap.get(arrMap.size() - 1).getX() <= MyFrame.W_Frame) {
             mario.move(arrMap);
+
+            marioRight = true;
+            marioLeft = false;
+
             checkMapMove = false;
             return;
         }
         if (mario.getX() != MyFrame.W_Frame / 2.5) {
             mario.move(arrMap);
+            if (orient == Actor.MOVE_LEFT) {
+                marioLeft = true;
+                marioRight = false;
+            }
+            if (orient == Actor.MOVE_RIGHT) {
+                marioRight = true;
+                marioLeft = false;
+            }
             checkMapMove = false;
             return;
         }
         //
-        if (!mario.checkMap(arrMap)) return;
-
+        if (!mario.checkMap(arrMap)
+        ) {
+            checkMapMove = false;
+            return;
+        }
         for (Map m : arrMap
         ) {
             m.move(orient);
+
+            marioRight = true;
+            marioLeft = false;
         }
         checkMapMove = true;
     }
 
     public void marioJump() {
+        setMarioMove(false);
+        if (marioLeft) {
+            mario.setOrient(Actor.JUMP_LEFT);
+        } else if (marioRight) {
+            mario.setOrient(Actor.JUMP_RIGHT);
+        }
         mario.jump();
     }
 
-    long t;
-
     public boolean ai() {
+        long T =0;
         if (checkMarioMove == false) {
             mario.setIndex(0);
         }
@@ -113,16 +150,17 @@ public class GameManager {
         if (mario.checkDie(arrGoomba) == true) {
             mario.setOrient(Actor.DIE);
         }
-
+        //Push box
         for (int i = 0; i < arrMap.size(); i++) {
             arrMap.get(i).checkPush(mario);
 
             if (arrMap.get(i).pushed == false) {
-                arrMap.get(i).push(mario);
+                arrMap.get(i).push(arrCoin);
             } else {
                 arrMap.get(i).fall();
             }
         }
+        //Enemy handle
         for (int i = arrGoomba.size() - 1; i >= 0; i--) {
             arrGoomba.get(i).changImage();
             arrGoomba.get(i).fall(arrMap);
@@ -139,14 +177,13 @@ public class GameManager {
             boolean checkDie = arrGoomba.get(i).checkDie(mario);
             if (checkDie) {
                 arrGoomba.get(i).die();
-                arrGoomba.get(i).setOrient(Enemy.DIE);
-                long T = System.currentTimeMillis();
-                if (T - t < 2000) {
-                    continue;
+                if (arrGoomba.get(i).die) {
+//                    while (T - arrGoomba.get(i).getT() < 1000) {
+//                        T = System.currentTimeMillis();
+//                    }
+                    arrGoomba.remove(i);
+                    System.out.println("Goomba have been destroy");
                 }
-                t = T;
-                arrGoomba.remove(i);
-                System.out.println("Goomba have been destroy");
             }
 
         }
@@ -154,6 +191,13 @@ public class GameManager {
         if (mario.checkDie(arrGoomba)) {
             mario.die();
             return false;
+        }
+
+        for (int i = arrCoin.size() - 1; i >= 0; i--) {
+            boolean check = arrCoin.get(i).move();
+            if (check == false) {
+                arrCoin.remove(i);
+            }
         }
         return true;
     }

@@ -3,12 +3,14 @@ package com.t3h.model;
 
 import com.t3h.gui.MyFrame;
 import com.t3h.model.enemy.Enemy;
+import sounds.MusicManage;
 import sounds.SoundManage;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Actor {
+    public static final int STAND_LEFT = 0;
     public static final int STAND_RIGHT = 1;
     public static final int JUMP_LEFT = 2;
     public static final int JUMP_RIGHT = 3;
@@ -27,7 +29,6 @@ public class Actor {
     protected int orient;
     protected int speed = 1;
     protected ArrayList<Image[]> images = new ArrayList<>();
-    private SoundManage soundManage = new SoundManage();
 
     public Actor(int x, int y) {
         this.x = x;
@@ -86,7 +87,7 @@ public class Actor {
         }
         if (jump == 0) {
             if (!die) {
-                soundManage.play("smw_jump.wav");
+                SoundManage.play("smw_jump.wav");
             }
             jump = 120;
         }
@@ -118,6 +119,18 @@ public class Actor {
         jump();
     }
 
+    public boolean onFloor(ArrayList<Map> arrMap){
+        for (Map m:arrMap
+             ) {
+            if (m.getBit() != 1) continue;
+            Rectangle rect = m.getRect().intersection(getRectBot());
+            if (!rect.isEmpty()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean checkMap(ArrayList<Map> arrMap) {
         for (Map m : arrMap
         ) {
@@ -134,13 +147,14 @@ public class Actor {
         for (int i = 0; i < arrE.size(); i++) {
             Rectangle right = arrE.get(i).getRectLeft().intersection(getRectRight());
             Rectangle left = arrE.get(i).getRectRight().intersection(getRectLeft());
-            if (!right.isEmpty() || !left.isEmpty() && !die) {
-                soundManage.play("smb_mariodie.wav");
+            if (!right.isEmpty() || !left.isEmpty() && !die && !arrE.get(i).die) {
+                MusicManage.stop();
+                SoundManage.play("smb_mariodie.wav");
                 return true;
             }
         }
         if (this.y > 490 && !die) {
-            soundManage.play("smb_mariodie.wav");
+            SoundManage.play("smb_mariodie.wav");
             return true;
         }
         return false;
@@ -188,8 +202,8 @@ public class Actor {
 
     public Rectangle getRectTop() {
         Rectangle rect = new Rectangle(
-                x+10, y - 2,
-                w-20, 2
+                x+15, y - 2,
+                w-30, 2
         );
         return rect;
     }
@@ -206,4 +220,7 @@ public class Actor {
         return x;
     }
 
+    public int getOrient() {
+        return orient;
+    }
 }
