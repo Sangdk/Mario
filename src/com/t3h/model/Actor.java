@@ -87,12 +87,13 @@ public class Actor {
         }
         if (jump == 0) {
             if (!die) {
+                onFloor =false;
                 SoundManage.play("smw_jump.wav");
             }
             jump = 120;
         }
     }
-
+    public boolean onFloor = false;
     public void fall(ArrayList<Map> arrMap) {
         int yR = y;
         int xR = x;
@@ -102,13 +103,15 @@ public class Actor {
             jump -= 2;
         } else {
             //change y when fall
-            jump = -1;
+            jump -= 2;
             y += 3;
         }
         boolean check = checkMap(arrMap);
         if (check == false && !die) {
-
-            if (y > 481) return;
+            if (jump <= 0) {
+                onFloor = true;
+            }
+            if (y > 480) return;
             y = yR;
             x = xR;
             jump = 0;
@@ -120,17 +123,6 @@ public class Actor {
         jump();
     }
 
-    public boolean onFloor(ArrayList<Map> arrMap){
-        for (Map m:arrMap
-             ) {
-            if (m.getBit() != 1) continue;
-            Rectangle rect = m.getRect().intersection(getRectBot());
-            if (!rect.isEmpty()){
-                return true;
-            }
-        }
-        return false;
-    }
     public boolean checkMap(ArrayList<Map> arrMap) {
         for (Map m : arrMap
         ) {
@@ -202,8 +194,8 @@ public class Actor {
 
     public Rectangle getRectTop() {
         Rectangle rect = new Rectangle(
-                x+15, y - 2,
-                w-30, 2
+                x + 15, y - 2,
+                w - 30, 2
         );
         return rect;
     }
@@ -218,6 +210,10 @@ public class Actor {
 
     public int getX() {
         return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public int getOrient() {

@@ -74,7 +74,6 @@ public class Map {
             g2d.drawImage(img.get(bit - 1)[index], x, y, 34, 40, null);
         }
     }
-
     public void move(int orient) {
         switch (orient) {
             case Mario.MOVE_LEFT:
@@ -91,6 +90,8 @@ public class Map {
                     coinUp(x+7,y,arrCoin);
                     colected = true;
                     SoundManage.play("smw_coin.wav");
+                }else {
+                    SoundManage.play("smb_bump.wav");
                 }
                 pushed = true;
                 return;
@@ -167,5 +168,9 @@ public class Map {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public void setX(int x) {
+        this.x = x;
     }
 }

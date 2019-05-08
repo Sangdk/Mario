@@ -121,10 +121,18 @@ public class GameManager {
             checkMapMove = false;
             return;
         }
-        for (Map m : arrMap
-        ) {
-            m.move(orient);
+        int[] arrX = new int[arrMap.size()];
+        for (int i = 0; i < arrMap.size(); i++) {
+            arrX[i] = arrMap.get(i).getX();
+            arrMap.get(i).move(orient);
 
+            if (!mario.checkMap(arrMap)) {
+                for (int j = 0; j <= i; j++) {
+                    arrMap.get(j).setX(arrX[j]);
+                }
+                checkMapMove = false;
+                return;
+            }
             marioRight = true;
             marioLeft = false;
         }
@@ -142,9 +150,18 @@ public class GameManager {
     }
 
     public boolean ai() {
-        long T =0;
+        long T = 0;
         if (checkMarioMove == false) {
             mario.setIndex(0);
+        }
+
+        if (mario.onFloor) {
+            if (mario.getOrient() == Actor.JUMP_LEFT) {
+                mario.setOrient(Actor.STAND_LEFT);
+            }
+            if (mario.getOrient() == Actor.JUMP_RIGHT) {
+                mario.setOrient(Actor.STAND_RIGHT);
+            }
         }
 
         if (mario.checkDie(arrGoomba) == true) {
@@ -157,7 +174,7 @@ public class GameManager {
             if (arrMap.get(i).pushed == false) {
                 arrMap.get(i).push(arrCoin);
             } else {
-                if (arrMap.get(i).getBit() == 2){
+                if (arrMap.get(i).getBit() == 2) {
                     arrMap.get(i).setIndex(1);
                 }
                 arrMap.get(i).fall();
