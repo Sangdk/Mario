@@ -29,7 +29,10 @@ public class MapManager {
                         bit = 11;
                     } else if (line.charAt(i) == 'c') {
                         bit =12;
-                    } else {
+                    }
+                    else if (line.charAt(i) == 'd') {
+                        bit =13;
+                    }else {
                         bit = Integer.parseInt(line.charAt(i) + "");
                     }
                     if (bit > 0) {

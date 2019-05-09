@@ -22,6 +22,7 @@ public class GameManager {
 
     public void initGame() {
         mario = new Mario(300, 380);
+        MusicManage.play("world_1-1.mid");
 
         arrGoomba = new ArrayList<>();
 
@@ -29,7 +30,6 @@ public class GameManager {
 
         initEnemy();
         arrMap = mapManager.readMap("map.txt");
-        MusicManage.play("world_1-1.mid");
     }
 
     public void initEnemy() {
@@ -42,7 +42,7 @@ public class GameManager {
         addGomba(3500, 420);
         addGomba(3570, 420);
 
-        addKoopa(3670,420);
+        addKoopa(3670, 420);
         addGomba(3770, 420);
         addGomba(3870, 420);
         addGomba(5570, 420);
@@ -54,12 +54,24 @@ public class GameManager {
         arrGoomba.add(g);
         System.out.println("Goomba have been create");
     }
-    protected void addKoopa(int x,int y){
+
+    protected void addKoopa(int x, int y) {
         Koopa k = new Koopa(x, y);
         arrGoomba.add(k);
         System.out.println("Koopa have been create");
     }
 
+    public String score() {
+        int score = mario.getScore();
+        String sScore = Integer.toString(score);
+        return sScore;
+    }
+
+    public String coins() {
+        int coins = mario.getCoins();
+        String sCoins = Integer.toString(coins);
+        return sCoins;
+    }
 
     public void draw(Graphics2D g2d) {
         for (Map m : arrMap
@@ -140,20 +152,22 @@ public class GameManager {
         }
         int[] arrX = new int[arrMap.size()];
         for (int i = 0; i < arrMap.size(); i++) {
-            arrX[i] = arrMap.get(i).getX();
-            arrMap.get(i).move(orient);
+            if (!mario.die) {
+                arrX[i] = arrMap.get(i).getX();
+                arrMap.get(i).move(orient);
 
-            if (!mario.checkMap(arrMap)) {
-                for (int j = 0; j <= i; j++) {
-                    arrMap.get(j).setX(arrX[j]);
+                if (!mario.checkMap(arrMap)) {
+                    for (int j = 0; j <= i; j++) {
+                        arrMap.get(j).setX(arrX[j]);
+                    }
+                    checkMapMove = false;
+                    return;
                 }
-                checkMapMove = false;
-                return;
+                marioRight = true;
+                marioLeft = false;
             }
-            marioRight = true;
-            marioLeft = false;
+            checkMapMove = true;
         }
-        checkMapMove = true;
     }
 
     public void marioJump() {
@@ -189,7 +203,7 @@ public class GameManager {
             arrMap.get(i).checkPush(mario);
 
             if (arrMap.get(i).pushed == false) {
-                arrMap.get(i).push(arrCoin);
+                arrMap.get(i).push(arrCoin, mario);
             } else {
                 if (arrMap.get(i).getBit() == 2) {
                     arrMap.get(i).setIndex(1);

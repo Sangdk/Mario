@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5cc193e-6186-4b68-8555-daf3884b5555" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/t3h/gui/GameOverPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/com/t3h/gui/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/com/t3h/gui/MyFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/com/t3h/gui/MyPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/com/t3h/gui/MyPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/com/t3h/manage/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/com/t3h/manage/GameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/com/t3h/manage/MapManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/com/t3h/manage/MapManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/com/t3h/model/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/com/t3h/model/Actor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/com/t3h/model/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/com/t3h/model/Map.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/com/t3h/model/enemy/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/com/t3h/model/enemy/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mario/map/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mario/map/map.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/t3h/gui/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/gui/MyPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/t3h/location.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/location.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/t3h/manage/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/manage/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/t3h/manage/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/manage/MapManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/t3h/model/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/model/Actor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/t3h/model/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/model/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/t3h/model/enemy/Koopa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/model/enemy/Koopa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/t3h/model/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/t3h/model/enemy/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/map.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,17 +29,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/t3h/model/Map.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="261">
-              <caret line="86" column="27" lean-forward="true" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+              <caret line="86" column="34" lean-forward="true" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4733#4734#0" expanded="true" />
-                <element signature="e#4782#4783#0" expanded="true" />
-                <element signature="e#4855#4856#0" expanded="true" />
-                <element signature="e#4912#4913#0" expanded="true" />
+                <element signature="e#4987#4988#0" expanded="true" />
+                <element signature="e#5036#5037#0" expanded="true" />
+                <element signature="e#5109#5110#0" expanded="true" />
+                <element signature="e#5166#5167#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/t3h/manage/MapManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,20 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/map/map.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="185" lean-forward="true" selection-start-line="11" selection-start-column="185" selection-end-line="11" selection-end-column="185" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/t3h/model/enemy/Goomba.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="20" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="6" column="189" lean-forward="true" selection-start-line="6" selection-start-column="189" selection-end-line="6" selection-end-column="189" />
             </state>
           </provider>
         </entry>
@@ -72,29 +81,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/t3h/model/Actor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-439">
-              <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+            <state relative-caret-position="-399">
+              <caret line="61" column="31" lean-forward="true" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4071#4072#0" expanded="true" />
-                <element signature="e#4105#4106#0" expanded="true" />
-                <element signature="e#5272#5273#0" expanded="true" />
-                <element signature="e#5296#5297#0" expanded="true" />
-                <element signature="e#5321#5322#0" expanded="true" />
-                <element signature="e#5345#5346#0" expanded="true" />
-                <element signature="e#5375#5376#0" expanded="true" />
-                <element signature="e#5404#5405#0" expanded="true" />
-                <marker date="1557426156254" expanded="true" signature="2870:2877" ph="..." />
+                <element signature="e#961#962#0" expanded="true" />
+                <element signature="e#1035#1036#0" expanded="true" />
+                <element signature="e#4342#4343#0" expanded="true" />
+                <element signature="e#5533#5534#0" expanded="true" />
+                <element signature="e#5582#5583#0" expanded="true" />
+                <element signature="e#5641#5642#0" expanded="true" />
+                <element signature="e#5698#5699#0" expanded="true" />
+                <element signature="e#5755#5756#0" expanded="true" />
+                <element signature="e#5829#5830#0" expanded="true" />
+                <element signature="e#5903#5904#0" expanded="true" />
+                <marker date="1557432197627" expanded="true" signature="3047:3054" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/t3h/location.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -102,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/t3h/manage/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+            <state relative-caret-position="500">
+              <caret line="170" column="5" selection-start-line="170" selection-start-column="5" selection-end-line="170" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1618#1619#0" expanded="true" />
@@ -118,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/t3h/model/enemy/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-580">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="640">
+              <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1004#1005#0" expanded="true" />
@@ -131,14 +133,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/t3h/gui/MyPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+            <state relative-caret-position="401">
+              <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/t3h/gui/MyFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -171,22 +182,23 @@
         <option value="$PROJECT_DIR$/src/com/t3h/model/Goomba.java" />
         <option value="$PROJECT_DIR$/src/com/t3h/location" />
         <option value="$PROJECT_DIR$/src/com/t3h/model/brick/Brick.java" />
-        <option value="$PROJECT_DIR$/src/com/t3h/gui/MyFrame.java" />
         <option value="$PROJECT_DIR$/src/sound/SoundManage.java" />
         <option value="$PROJECT_DIR$/src/com/t3h/model/enemy/Goomba.java" />
         <option value="$PROJECT_DIR$/src/sounds/SoundManage.java" />
         <option value="$PROJECT_DIR$/src/sounds/MusicManage.java" />
         <option value="$PROJECT_DIR$/src/com/t3h/model/Mario.java" />
-        <option value="$PROJECT_DIR$/src/com/t3h/model/enemy/Enemy.java" />
         <option value="$PROJECT_DIR$/src/com/t3h/model/items/Coin.java" />
         <option value="$PROJECT_DIR$/src/com/t3h/model/enemy/Koopa.java" />
-        <option value="$PROJECT_DIR$/src/com/t3h/manage/MapManager.java" />
-        <option value="$PROJECT_DIR$/src/map/map.txt" />
-        <option value="$PROJECT_DIR$/src/com/t3h/gui/MyPanel.java" />
         <option value="$PROJECT_DIR$/src/com/t3h/location.txt" />
-        <option value="$PROJECT_DIR$/src/com/t3h/model/Actor.java" />
-        <option value="$PROJECT_DIR$/src/com/t3h/manage/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/map/map.txt" />
+        <option value="$PROJECT_DIR$/src/com/t3h/manage/MapManager.java" />
+        <option value="$PROJECT_DIR$/src/com/t3h/model/enemy/Enemy.java" />
         <option value="$PROJECT_DIR$/src/com/t3h/model/Map.java" />
+        <option value="$PROJECT_DIR$/src/com/t3h/model/Actor.java" />
+        <option value="$PROJECT_DIR$/src/com/t3h/gui/GameOverPanel.java" />
+        <option value="$PROJECT_DIR$/src/com/t3h/gui/MyFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/t3h/manage/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/com/t3h/gui/MyPanel.java" />
       </list>
     </option>
   </component>
@@ -221,6 +233,13 @@
               <item name="Mario" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="t3h" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="t3h" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Mario" type="b2602c69:ProjectViewProjectNode" />
@@ -279,7 +298,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557427321688" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557434908019" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
@@ -499,13 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/t3h/gui/MyFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/t3h/model/brick/Brick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -553,16 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/Mario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sounds/MusicManage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -584,23 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/map/map.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="185" lean-forward="true" selection-start-line="11" selection-start-column="185" selection-end-line="11" selection-end-column="185" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/t3h/gui/MyPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/t3h/location.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -608,16 +593,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/enemy/Enemy.java">
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/enemy/Goomba.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-580">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="164">
+          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="20" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1004#1005#0" expanded="true" />
-            <element signature="e#1078#1079#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/Mario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1462#1463#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/manage/MapManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -632,49 +634,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/enemy/Goomba.java">
+    <entry file="file://$PROJECT_DIR$/src/map/map.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="20" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/t3h/manage/MapManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="6" column="189" lean-forward="true" selection-start-line="6" selection-start-column="189" selection-end-line="6" selection-end-column="189" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/t3h/model/Actor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-439">
-          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        <state relative-caret-position="-399">
+          <caret line="61" column="31" lean-forward="true" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4071#4072#0" expanded="true" />
-            <element signature="e#4105#4106#0" expanded="true" />
-            <element signature="e#5272#5273#0" expanded="true" />
-            <element signature="e#5296#5297#0" expanded="true" />
-            <element signature="e#5321#5322#0" expanded="true" />
-            <element signature="e#5345#5346#0" expanded="true" />
-            <element signature="e#5375#5376#0" expanded="true" />
-            <element signature="e#5404#5405#0" expanded="true" />
-            <marker date="1557426156254" expanded="true" signature="2870:2877" ph="..." />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#1035#1036#0" expanded="true" />
+            <element signature="e#4342#4343#0" expanded="true" />
+            <element signature="e#5533#5534#0" expanded="true" />
+            <element signature="e#5582#5583#0" expanded="true" />
+            <element signature="e#5641#5642#0" expanded="true" />
+            <element signature="e#5698#5699#0" expanded="true" />
+            <element signature="e#5755#5756#0" expanded="true" />
+            <element signature="e#5829#5830#0" expanded="true" />
+            <element signature="e#5903#5904#0" expanded="true" />
+            <marker date="1557432197627" expanded="true" signature="3047:3054" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="86" column="34" lean-forward="true" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4987#4988#0" expanded="true" />
+            <element signature="e#5036#5037#0" expanded="true" />
+            <element signature="e#5109#5110#0" expanded="true" />
+            <element signature="e#5166#5167#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/t3h/manage/GameManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+        <state relative-caret-position="500">
+          <caret line="170" column="5" selection-start-line="170" selection-start-column="5" selection-end-line="170" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1618#1619#0" expanded="true" />
@@ -685,16 +690,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/Map.java">
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/model/enemy/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="86" column="27" lean-forward="true" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+        <state relative-caret-position="640">
+          <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4733#4734#0" expanded="true" />
-            <element signature="e#4782#4783#0" expanded="true" />
-            <element signature="e#4855#4856#0" expanded="true" />
-            <element signature="e#4912#4913#0" expanded="true" />
+            <element signature="e#1004#1005#0" expanded="true" />
+            <element signature="e#1078#1079#0" expanded="true" />
+            <element signature="e#1840#1841#0" expanded="true" />
+            <element signature="e#1864#1865#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/gui/GameOverPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/gui/MyFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/t3h/gui/MyPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

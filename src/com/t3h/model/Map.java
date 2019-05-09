@@ -62,6 +62,9 @@ public class Map {
         img.add(new Image[]{
                 ImageLoader.getImage("mario_castle.png")
         });
+        img.add(new Image[]{
+                ImageLoader.getImage("title.png")
+        });
 
     }
 
@@ -70,6 +73,8 @@ public class Map {
             g2d.drawImage(img.get(bit - 1)[index], x, y, 130, 130, null);
         } else if (bit == 12) {
             g2d.drawImage(img.get(bit - 1)[index], x, y - 90, 130, 130, null);
+        } else if (bit == 13) {
+            g2d.drawImage(img.get(bit - 1)[index], x, y - 80, 200, 130, null);
         } else if (bit == 4) {
             g2d.drawImage(img.get(bit - 1)[index], x, y - 50, 60, 100, null);
         } else if (bit == 10) {
@@ -89,13 +94,14 @@ public class Map {
             }
     }
 
-    public void push(ArrayList<Coin> arrCoin) {
+    public void push(ArrayList<Coin> arrCoin,Mario mario) {
         if (impactBrick == true && !colected) {
             if (push == 0) {
                 if (bit == 2) {
                     coinUp(x + 7, y, arrCoin);
                     colected = true;
                     SoundManage.play("smw_coin.wav");
+                    mario.setCoins(10);
                 } else {
                     SoundManage.play("smb_bump.wav");
                 }

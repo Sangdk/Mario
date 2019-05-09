@@ -14,10 +14,12 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     private GameManager manager = new GameManager();
     private BitSet b = new BitSet(256);
     private Image Background;
+    private Image GameOver;
+    private boolean marioDie;
 
     public MyPanel() {
-//        setBackground(Color.blue);
         Background = ImageLoader.getImage("Background1.jpg");
+        GameOver = ImageLoader.getImage("screen_model_newr.png");
         manager.initGame();
         setFocusable(true);
         addKeyListener(this);
@@ -31,7 +33,18 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         Graphics2D g2d = (Graphics2D) g;
         super.paintComponent(g2d);
         g2d.drawImage(Background, 0, 0, 750, 550, null);
+
+        g2d.setFont(new Font("Tahoma",Font.BOLD,20));
+        g2d.drawString("SCORE",20,20);
+        g2d.drawString(manager.score(),30,40);
+        g2d.drawString("COINS",120,20);
+        g2d.drawString(manager.coins(),130,40);
+        g2d.drawString("WORLD",220,20);
+        g2d.drawString("1-1",230,40);
         manager.draw(g2d);
+        if (marioDie){
+            g2d.drawImage(GameOver,0,0,750,550,null);
+        }
     }
 
     @Override
@@ -63,22 +76,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                 manager.marioJump();
             }
             boolean check = manager.ai();
-//            if (!check){
-//                int result = JOptionPane.showConfirmDialog(
-//                        null,
-//                        "Do you want to replay?",
-//                        "Game over",
-//                        JOptionPane.YES_NO_OPTION,
-//                        JOptionPane.QUESTION_MESSAGE
-//                );
-//                if (result == JOptionPane.YES_OPTION){
-//                    manager.initGame();
-//                    b = new BitSet();
-//                }else{
-//                    System.exit(0);
-//                    return;
-//                }
-//            }
+            if (!check){
+                marioDie = true;
+            }
             repaint();
             try {
                 Thread.sleep(6);

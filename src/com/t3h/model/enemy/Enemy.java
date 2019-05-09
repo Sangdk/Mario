@@ -137,6 +137,7 @@ public class Enemy {
     public boolean checkDie(Mario mario) {
         Rectangle top = mario.getRectBot().intersection(getRectTop());
         if (top.isEmpty() == false && !mario.die && !die) {
+            mario.setScore(100);
             soundManage.play("smw_kick.wav");
             return true;
         }

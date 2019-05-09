@@ -24,6 +24,8 @@ public class Actor {
     private int h = 44;
     private int jumpCount = 0;
     public boolean die = false;
+    public int score = 0;
+    public int coins = 0;
 
     protected int x, y;
     protected int orient;
@@ -52,29 +54,31 @@ public class Actor {
     }
 
     public void move(ArrayList<Map> arrMap) {
-        int xR = x;
-        int yR = y;
-        switch (orient) {
-            case MOVE_LEFT:
-            case JUMP_LEFT:
-                x -= speed;
-                break;
-            case MOVE_RIGHT:
-            case JUMP_RIGHT:
-                x += speed;
-                break;
-        }
-        if (checkMap(arrMap) == false && !die) {
-            x = xR;
-            y = yR;
-            return;
-        }
+        if (!die) {
+            int xR = x;
+            int yR = y;
+            switch (orient) {
+                case MOVE_LEFT:
+                case JUMP_LEFT:
+                    x -= speed;
+                    break;
+                case MOVE_RIGHT:
+                case JUMP_RIGHT:
+                    x += speed;
+                    break;
+            }
+            if (checkMap(arrMap) == false && !die) {
+                x = xR;
+                y = yR;
+                return;
+            }
 
-        if (x <= 0 || x >= MyFrame.W_Frame - images.get(orient)[index].getWidth(null) + 10) {
-            x = xR;
-        }
-        if (y <= 0 || y >= MyFrame.W_Frame - images.get(orient)[index].getHeight(null) - 40) {
-            y = yR;
+            if (x <= 0 || x >= MyFrame.W_Frame - images.get(orient)[index].getWidth(null) + 10) {
+                x = xR;
+            }
+            if (y <= 0 || y >= MyFrame.W_Frame - images.get(orient)[index].getHeight(null) - 40) {
+                y = yR;
+            }
         }
     }
 
@@ -87,13 +91,15 @@ public class Actor {
         }
         if (jump == 0) {
             if (!die) {
-                onFloor =false;
+                onFloor = false;
                 SoundManage.play("smw_jump.wav");
             }
             jump = 120;
         }
     }
+
     public boolean onFloor = false;
+
     public void fall(ArrayList<Map> arrMap) {
         int yR = y;
         int xR = x;
@@ -126,7 +132,8 @@ public class Actor {
     public boolean checkMap(ArrayList<Map> arrMap) {
         for (Map m : arrMap
         ) {
-            if (m.getBit() == 8 || m.getBit() == 9 || m.getBit() == 5 || m.getBit() == 6 || m.getBit() == 7|| m.getBit() == 12) continue;
+            if (m.getBit() == 8 || m.getBit() == 9 || m.getBit() == 5 || m.getBit() == 6
+                    || m.getBit() == 7 || m.getBit() == 12 || m.getBit() == 13) continue;
             Rectangle rect = m.getRect().intersection(getRect());
             if (rect.isEmpty() == false) {
                 return false;
@@ -218,5 +225,21 @@ public class Actor {
 
     public int getOrient() {
         return orient;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins += coins;
+    }
+
+    public void setScore(int score) {
+        this.score += score;
     }
 }
