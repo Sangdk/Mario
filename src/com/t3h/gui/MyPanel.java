@@ -81,7 +81,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 //            }
             repaint();
             try {
-                Thread.sleep(8);
+                Thread.sleep(6);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

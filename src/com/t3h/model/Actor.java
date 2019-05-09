@@ -126,7 +126,7 @@ public class Actor {
     public boolean checkMap(ArrayList<Map> arrMap) {
         for (Map m : arrMap
         ) {
-            if (m.getBit() == 8 || m.getBit() == 9 || m.getBit() == 5 || m.getBit() == 6 || m.getBit() == 7) continue;
+            if (m.getBit() == 8 || m.getBit() == 9 || m.getBit() == 5 || m.getBit() == 6 || m.getBit() == 7|| m.getBit() == 12) continue;
             Rectangle rect = m.getRect().intersection(getRect());
             if (rect.isEmpty() == false) {
                 return false;

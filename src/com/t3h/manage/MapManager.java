@@ -27,6 +27,8 @@ public class MapManager {
                         bit = 10;
                     } else if (line.charAt(i) == 'b') {
                         bit = 11;
+                    } else if (line.charAt(i) == 'c') {
+                        bit =12;
                     } else {
                         bit = Integer.parseInt(line.charAt(i) + "");
                     }

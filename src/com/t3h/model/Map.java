@@ -17,7 +17,7 @@ public class Map {
     int push = 20;
     private boolean impactBrick = false;
     private Coin coin;
-    private int index=0;
+    private int index = 0;
 
     private ArrayList<Image[]> img = new ArrayList<>();
 
@@ -59,38 +59,44 @@ public class Map {
         img.add(new Image[]{
                 ImageLoader.getImage("stair1.png")
         });
-
+        img.add(new Image[]{
+                ImageLoader.getImage("mario_castle.png")
+        });
 
     }
 
     public void draw(Graphics2D g2d) {
         if (bit == 8 || bit == 9) {
             g2d.drawImage(img.get(bit - 1)[index], x, y, 130, 130, null);
+        } else if (bit == 12) {
+            g2d.drawImage(img.get(bit - 1)[index], x, y - 90, 130, 130, null);
         } else if (bit == 4) {
-            g2d.drawImage(img.get(bit - 1)[index], x, y-50, 60, 100, null);
+            g2d.drawImage(img.get(bit - 1)[index], x, y - 50, 60, 100, null);
         } else if (bit == 10) {
-            g2d.drawImage(img.get(bit - 1)[index], x, y-100, 60, 150, null);
+            g2d.drawImage(img.get(bit - 1)[index], x, y - 100, 60, 150, null);
         } else {
             g2d.drawImage(img.get(bit - 1)[index], x, y, 34, 40, null);
         }
     }
+
     public void move(int orient) {
-        switch (orient) {
-            case Mario.MOVE_LEFT:
-                break;
-            case Mario.MOVE_RIGHT:
-                x -= 1;
-                break;
-        }
+            switch (orient) {
+                case Mario.MOVE_LEFT:
+                    break;
+                case Mario.MOVE_RIGHT:
+                    x -= 1;
+                    break;
+            }
     }
+
     public void push(ArrayList<Coin> arrCoin) {
         if (impactBrick == true && !colected) {
             if (push == 0) {
-                if (bit == 2){
-                    coinUp(x+7,y,arrCoin);
+                if (bit == 2) {
+                    coinUp(x + 7, y, arrCoin);
                     colected = true;
                     SoundManage.play("smw_coin.wav");
-                }else {
+                } else {
                     SoundManage.play("smb_bump.wav");
                 }
                 pushed = true;
@@ -102,10 +108,12 @@ public class Map {
             }
         }
     }
-    boolean colected =false;
-    public void coinUp(int x, int y, ArrayList<Coin> arrCoin){
-            coin = new Coin(x, y);
-            arrCoin.add(coin);
+
+    boolean colected = false;
+
+    public void coinUp(int x, int y, ArrayList<Coin> arrCoin) {
+        coin = new Coin(x, y);
+        arrCoin.add(coin);
     }
 
     public void fall() {
@@ -123,13 +131,19 @@ public class Map {
     public Rectangle getRect() {
         if (bit == 4) {
             Rectangle rect = new Rectangle(
-                    x, y-50, 60, 90
+                    x, y - 50, 60, 90
             );
             return rect;
         }
         if (bit == 10) {
             Rectangle rect = new Rectangle(
-                    x, y-100, 60, 140
+                    x, y - 100, 60, 140
+            );
+            return rect;
+        }
+        if (bit == 12) {
+            Rectangle rect = new Rectangle(
+                    x, y - 90, 130, 130
             );
             return rect;
         }

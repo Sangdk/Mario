@@ -6,6 +6,7 @@ import com.t3h.model.enemy.Enemy;
 import com.t3h.model.Map;
 import com.t3h.model.Mario;
 import com.t3h.model.enemy.Goomba;
+import com.t3h.model.enemy.Koopa;
 import com.t3h.model.items.Coin;
 import sounds.MusicManage;
 
@@ -32,15 +33,31 @@ public class GameManager {
     }
 
     public void initEnemy() {
-        checkCreate(700, 380);
-        checkCreate(1000, 380);
-        checkCreate(1200, 380);
+        addGomba(700, 420);
+        addGomba(1000, 420);
+        addGomba(1200, 420);
+        addGomba(1260, 420);
+        addGomba(2860, 116);
+        addGomba(2800, 116);
+        addGomba(3500, 420);
+        addGomba(3570, 420);
+
+        addKoopa(3670,420);
+        addGomba(3770, 420);
+        addGomba(3870, 420);
+        addGomba(5570, 420);
+        addGomba(5670, 420);
     }
 
-    protected void checkCreate(int x, int y) {
+    protected void addGomba(int x, int y) {
         Goomba g = new Goomba(x, y);
         arrGoomba.add(g);
         System.out.println("Goomba have been create");
+    }
+    protected void addKoopa(int x,int y){
+        Koopa k = new Koopa(x, y);
+        arrGoomba.add(k);
+        System.out.println("Koopa have been create");
     }
 
 
