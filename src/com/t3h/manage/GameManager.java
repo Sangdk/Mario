@@ -181,7 +181,6 @@ public class GameManager {
     }
 
     public boolean ai() {
-        long T = 0;
         if (checkMarioMove == false) {
             mario.setIndex(0);
         }
@@ -195,7 +194,7 @@ public class GameManager {
             }
         }
 
-        if (mario.checkDie(arrGoomba) == true) {
+        if (mario.checkDie(arrGoomba,arrMap) == true) {
             mario.setOrient(Actor.DIE);
         }
         //Push box
@@ -229,9 +228,6 @@ public class GameManager {
             if (checkDie) {
                 arrGoomba.get(i).die();
                 if (arrGoomba.get(i).die) {
-//                    while (T - arrGoomba.get(i).getT() < 1000) {
-//                        T = System.currentTimeMillis();
-//                    }
                     arrGoomba.remove(i);
                     System.out.println("Goomba have been destroy");
                 }
@@ -239,7 +235,7 @@ public class GameManager {
 
         }
         mario.fall(arrMap);
-        if (mario.checkDie(arrGoomba)) {
+        if (mario.checkDie(arrGoomba,arrMap)) {
             mario.die();
             return false;
         }

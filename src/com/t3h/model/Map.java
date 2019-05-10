@@ -149,7 +149,7 @@ public class Map {
         }
         if (bit == 12) {
             Rectangle rect = new Rectangle(
-                    x, y - 90, 130, 130
+                    x+15, y - 50, 60, 60
             );
             return rect;
         }

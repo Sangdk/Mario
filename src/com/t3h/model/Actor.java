@@ -142,7 +142,7 @@ public class Actor {
         return true;
     }
 
-    public boolean checkDie(ArrayList<Enemy> arrE) {
+    public boolean checkDie(ArrayList<Enemy> arrE,ArrayList<Map> arrM) {
         for (int i = 0; i < arrE.size(); i++) {
             Rectangle right = arrE.get(i).getRectLeft().intersection(getRectRight());
             Rectangle left = arrE.get(i).getRectRight().intersection(getRectLeft());
@@ -150,6 +150,14 @@ public class Actor {
                 MusicManage.stop();
                 SoundManage.play("smb_mariodie.wav");
                 return true;
+            }
+        }
+        for (int i = 0; i <arrM.size(); i++) {
+            if (arrM.get(i).getBit() ==12) {
+                Rectangle rect = arrM.get(i).getRect().intersection(getRect());
+                if (!rect.isEmpty()){
+                    return true;
+                }
             }
         }
         if (this.y > 490 && !die) {

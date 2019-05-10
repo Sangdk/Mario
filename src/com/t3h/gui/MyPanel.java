@@ -19,7 +19,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
     public MyPanel() {
         Background = ImageLoader.getImage("Background1.jpg");
-        GameOver = ImageLoader.getImage("screen_model_newr.png");
+        GameOver = ImageLoader.getImage("screen_model_new.png");
         manager.initGame();
         setFocusable(true);
         addKeyListener(this);
@@ -34,6 +34,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         super.paintComponent(g2d);
         g2d.drawImage(Background, 0, 0, 750, 550, null);
 
+        g2d.setColor(Color.white);
         g2d.setFont(new Font("Tahoma",Font.BOLD,20));
         g2d.drawString("SCORE",20,20);
         g2d.drawString(manager.score(),30,40);
@@ -81,7 +82,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
             }
             repaint();
             try {
-                Thread.sleep(6);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
